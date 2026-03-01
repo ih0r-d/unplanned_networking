@@ -84,6 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  document.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A' || e.target.closest('button')) return;
+    handleNext();
+  });
+
   document.addEventListener('keydown', (e) => {
     if (!document.body.classList.contains('fullscreen-mode')) {
         updateCurrentSlideIndex();
