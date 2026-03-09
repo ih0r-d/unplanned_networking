@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Networking 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --lime: #b0ff92;
+      --purple: #8b5cf6;
+      --dark: #0f172a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--dark);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .mesh-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 0;
+      opacity: 0.4;
+      background: radial-gradient(at 0% 0%, var(--lime) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, var(--purple) 0px, transparent 50%);
+      filter: blur(40px);
+      animation: pulse 10s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 20px;
+      max-width: 900px;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--lime);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      display: block;
+      letter-spacing: 2px;
+      opacity: 0.7;
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(3rem, 10vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -3px;
+      text-transform: uppercase;
+    }
+
+    .topic {
+      font-family: 'JetBrains Mono', monospace;
+      color: #fff;
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      margin-bottom: 4rem;
+      display: block;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.4;
+      border-left: 3px solid var(--purple);
+      padding-left: 20px;
+      text-align: left;
+    }
+
+    .highlight {
+      color: var(--purple);
+    }
+
+    /* Таймер */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: clamp(15px, 4vw, 30px);
+    }
+
+    .time-item {
+      text-align: center;
+    }
+
+    .time-val {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .time-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      color: var(--lime);
+      letter-spacing: 1px;
+      margin-top: 5px;
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="mesh-bg"></div>
+
+<div class="container">
+  <span class="mono">// sys.status: ready_to_sync</span>
+
+  <h1>Незабаром</h1>
+
+  <div class="topic">
+    <span class="highlight">Topic:</span><br>
+    Unplanned networking: Building connections through code
+  </div>
+
+  <div class="countdown" id="timer">
+    <div class="time-item">
+      <span class="time-val" id="days">00</span>
+      <span class="time-label">днів</span>
+    </div>
+    <div class="time-item">
+      <span class="time-val" id="hours">00</span>
+      <span class="time-label">год</span>
+    </div>
+    <div class="time-item">
+      <span class="time-val" id="minutes">00</span>
+      <span class="time-label">хв</span>
+    </div>
+    <div class="time-item">
+      <span class="time-val" id="seconds">00</span>
+      <span class="time-label">сек</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Ціль: 25 березня 2026, 17:30 (за годину до 18:30)
+  const targetDate = new Date('March 25, 2026 17:30:00').getTime();
+
+  function updateTimer() {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    if (diff > 0) {
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('days').innerText = d.toString().padStart(2, '0');
+      document.getElementById('hours').innerText = h.toString().padStart(2, '0');
+      document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
+      document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
+    } else {
+      document.getElementById('timer').innerHTML = "<span class='mono'>SYNCHRONIZATION STARTED</span>";
+    }
+  }
+
+  setInterval(updateTimer, 1000);
+  updateTimer();
+</script>
+
+</body>
+</html>

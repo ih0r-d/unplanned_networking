@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const slideNumberElement = slide.querySelector('.slide-number');
       if (slideNumberElement) {
-        if (index > 0) { // Start numbering from the second slide (index 1)
+        if (index > 0) {
           slideNumberElement.textContent = `${index + 1}`;
         } else {
-          slideNumberElement.textContent = ''; // First slide (index 0) has no number
+          slideNumberElement.textContent = '';
         }
       }
     });
@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
       document.body.style.setProperty('--scale-factor', scale);
     } else {
-      // For normal mobile view, we disable scaling and let CSS handle responsive reflow
       document.body.style.removeProperty('--scale-factor');
     }
   }
@@ -53,15 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
     currentSlideIndex = index;
     updateActiveSlideClass();
 
-    if (document.body.classList.contains('fullscreen-mode')) {
-      // In fullscreen, CSS handles visibility/positioning based on .active class
-    } else {
-      slides[currentSlideIndex].scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'nearest'
-      });
-    }
+    if (document.body.classList.contains('fullscreen-mode')) return;
+
+    slides[currentSlideIndex].scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest'
+    });
   }
 
   function handleNext() {
@@ -148,13 +145,10 @@ document.addEventListener('DOMContentLoaded', () => {
       updateActiveSlideClass(); 
     } else {
       document.body.classList.remove('fullscreen-mode');
-      // Re-align scroll position to current slide when exiting
       setTimeout(() => scrollToSlide(currentSlideIndex), 100);
     }
     updateScale();
   });
-
-  // Initial setup
   window.addEventListener('resize', updateScale);
   updateScale();
   updateCurrentSlideIndex();
