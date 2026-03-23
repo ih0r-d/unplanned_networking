@@ -203,6 +203,15 @@ h2.slide-title.solution {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
 }
 
+.disclaimer-slide .content-area {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  transform: translateY(-28px);
+}
+
 .dots-grid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -718,22 +727,51 @@ h2.slide-title.solution {
 
 .disclaimer-title {
   font-size: 70px;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
   font-family: 'Montserrat', serif;
 }
 
 .disclaimer-text {
   font-size: 32px;
   color: var(--dark);
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 .disclaimer-footer {
   font-size: 32px;
   color: var(--dark);
   font-weight: 800;
-  border-top: 2px solid #f1f5f9;
-  padding-top: 40px;
+  border-top: 2px solid rgba(148, 163, 184, 0.22);
+  padding-top: 24px;
+}
+
+.disclaimer-easter-egg {
+  position: absolute;
+  right: 0;
+  bottom: 6px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  color: rgba(71, 85, 105, 0.8);
+  text-align: left;
+  opacity: 0.72;
+}
+
+.disclaimer-easter-egg-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  line-height: 1.2;
+  color: inherit;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.disclaimer-easter-egg-icon {
+  font-size: 16px;
+  color: var(--purple);
+  opacity: 0.9;
 }
 
 .mesh-bg-lime-custom {
@@ -835,6 +873,7 @@ h2.slide-title.solution {
   height: 100%;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
+  opacity: 0.7;
 }
 
 .reaction-container {
@@ -1236,11 +1275,12 @@ h2.slide-title.solution {
 
 .noise-word {
   position: absolute;
-  color: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.07);
   font-family: 'Montserrat', sans-serif;
   font-weight: 900;
   text-transform: uppercase;
   user-select: none;
+  letter-spacing: 2px;
 }
 
 .result-comparison {
@@ -1273,6 +1313,79 @@ h2.slide-title.solution {
   display: flex;
   align-items: center;
   gap: 15px;
+}
+
+.architecture-comparison {
+  gap: 36px;
+  margin-top: 10px;
+  align-items: stretch;
+}
+
+.architecture-column {
+  flex: 1;
+  padding: 34px 32px;
+  border-radius: 28px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.architecture-column h4 {
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: var(--dark);
+  letter-spacing: 0.5px;
+  text-transform: none;
+}
+
+.architecture-column-accent {
+  background: linear-gradient(180deg, rgba(176, 255, 146, 0.18) 0%, rgba(255, 255, 255, 1) 100%);
+  border-color: rgba(176, 255, 146, 0.7);
+}
+
+.architecture-column li {
+  align-items: flex-start;
+  font-size: 24px;
+  line-height: 1.35;
+}
+
+.architecture-column li i {
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.architecture-note {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.technical-depth-card .session-step {
+  min-height: 92px;
+  gap: 22px;
+  margin-bottom: 18px;
+  align-items: flex-start;
+}
+
+.technical-depth-card .session-step::before {
+  left: 24px;
+  top: 50px;
+  height: 18px;
+}
+
+.technical-depth-card .step-icon {
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+}
+
+.technical-depth-card .step-content {
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+.technical-depth-card .step-tag {
+  font-size: 14px;
+  margin-bottom: 2px;
 }
 
 .code-card {
@@ -2301,6 +2414,25 @@ h2.slide-title.solution {
   text-align: left;
 }
 
+.trigger-log-stream {
+  max-width: 960px;
+}
+
+.trigger-log-entry {
+  transition: all 0.25s ease;
+}
+
+.trigger-log-entry-muted {
+  opacity: 0.28;
+  filter: blur(2.2px);
+}
+
+.trigger-note {
+  margin-top: 28px;
+  font-size: 30px;
+  text-align: center;
+}
+
 .side-effect-card {
   background: #fff;
   color: var(--dark);
@@ -2320,6 +2452,12 @@ h2.slide-title.solution {
   background-color: #fff;
   background-image: radial-gradient(at 0% 0%, rgba(176, 255, 146, 0.35) 0%, transparent 70%),
                     radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.35) 0%, transparent 70%);
+}
+
+.final-title-slide {
+  justify-content: flex-end;
+  padding-top: 40px;
+  padding-bottom: 120px;
 }
 
 .hidden-return {
@@ -2646,6 +2784,19 @@ h2.slide-title.solution {
   right: 40px;
 }
 
+.hidden-return-trigger {
+  bottom: 34px;
+  left: 52px;
+}
+
+.hidden-return-community {
+  top: 44px;
+  right: 54px;
+  background-color: rgba(15, 23, 42, 0.82);
+  border-color: rgba(176, 255, 146, 0.28);
+  color: #e2e8f0;
+}
+
 .qr-link-line {
   font-size: 18px;
   white-space: nowrap;
@@ -2850,32 +3001,32 @@ h2.slide-title.solution {
 .noise-hype {
   top: 10%;
   left: 10%;
-  font-size: 40px;
+  font-size: 38px;
 }
 
 .noise-news {
   top: 20%;
   right: 15%;
-  font-size: 60px;
+  font-size: 56px;
 }
 
 .noise-trends {
   bottom: 15%;
   left: 20%;
-  font-size: 50px;
+  font-size: 46px;
 }
 
 .noise-releases {
   bottom: 30%;
   right: 10%;
-  font-size: 30px;
+  font-size: 28px;
 }
 
 .noise-drama {
   top: 50%;
   left: 5%;
-  font-size: 24px;
-  opacity: 0.3;
+  font-size: 22px;
+  opacity: 0.28;
 }
 
 .async-code {
@@ -3027,4 +3178,72 @@ h2.slide-title.solution {
   font-size: 30px;
   margin-bottom: 30px;
   color: var(--slate);
+}
+
+.join-team-slide {
+  justify-content: center;
+}
+
+.join-team-tag {
+  margin-bottom: 24px;
+  color: var(--lime);
+}
+
+.join-team-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.join-team-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.join-team-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 88px;
+  line-height: 0.98;
+  letter-spacing: -3px;
+  color: #fff;
+  margin-bottom: 24px;
+}
+
+.join-team-note {
+  font-size: 28px;
+  color: #cbd5e1;
+  margin-bottom: 18px;
+}
+
+.join-team-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 16px 28px;
+  border-radius: 999px;
+  background: var(--lime);
+  color: var(--dark);
+  font-size: 24px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.join-team-qr-card {
+  display: flex;
+  justify-content: center;
+}
+
+.join-team-qr-frame {
+  padding: 22px;
+  border-radius: 32px;
+  background: #fff;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.join-team-qr-frame img {
+  display: block;
+  width: 320px;
+  height: 320px;
+  border-radius: 20px;
 }
